@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>Task List</title>
+    <title>Task Management System</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
         body {
@@ -33,7 +35,7 @@
 
         th,
         td {
-            text-align: center;
+            text-align: justify;
         }
 
         tbody tr:hover {
@@ -56,12 +58,15 @@
             border-color: #007bff;
 
         }
+        .action-cell {
+            min-width: 150px;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h3>Task List</h3>
+        <h3>Task Management System</h3>
     </header>
     <main>
         <div class="col-md-4">
@@ -100,12 +105,12 @@
 
                     @for ($i = 0; $i < count($createdTasks); $i++)
                         <tr class="table-primary">
-                            <td>{{ $i + 1 }}</td>
+                            <td>{{ $createdTasks->firstItem() + $i }}</td>
                             <td>{{ $createdTasks[$i]['title'] }}</td>
                             <td>{{ $createdTasks[$i]['description'] }}</td>
-                            <td>{{ $createdTasks[$i]['due_date'] }}</td>
+                            <td class="action-cell">{{ $createdTasks[$i]['due_date'] }}</td>
                             <td>{{ $createdTasks[$i]['created_at'] }}</td>
-                            <td>
+                            <td class="action-cell">
                                 @if ($createdTasks[$i]['status'] == 1)
                                     <a name="" id="" class="btn btn-secondary btn-sm"
                                         href="javascript:void(0)" role="button">New Task</a>
@@ -114,19 +119,19 @@
                                         href="javascript:void(0)" role="button">Task Completed</a>
                                 @endif
                             </td>
-                            <td>
+                            <td class="action-cell">
                                 @if ($createdTasks[$i]['status'] == 1)
                                     <a name="" id="" href="javascript:void(0)"
                                         class="btn btn-warning btn-sm"
-                                        onclick="completeTask('{{ $createdTasks[$i]['id'] }}')" role="button">Complete the task</a>
+                                        onclick="completeTask('{{ $createdTasks[$i]['id'] }}')" role="button" title="Click to complete the task"><i class="fas fa-check"></i></a>
                                 
                                     <a name="" id="" href="javascript:void(0)"
                                         class="btn btn-primary btn-sm" onclick="editTask('{{ $createdTasks[$i]['id'] }}')"
-                                        role="button">Edit</a>
+                                        role="button" title="Edit"><i class="fas fa-edit"></i></a>
 
                                     <a name="" id="" href="javascript:void(0)"
                                         class="btn btn-primary btn-sm" onclick="deleteTask('{{ $createdTasks[$i]['id'] }}')"
-                                        role="button">Delete</a>
+                                        role="button" title="Delete"><i class="fas fa-trash"></i></a>
                                 @endif
                             </td>
 

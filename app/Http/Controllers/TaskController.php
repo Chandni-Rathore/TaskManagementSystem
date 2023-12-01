@@ -32,7 +32,7 @@ class TaskController extends Controller
         /***Server side validation start */
         $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'required|max:500',
             'dueDate' => 'required|date'
         ]);
 

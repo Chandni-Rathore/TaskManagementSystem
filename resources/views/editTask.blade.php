@@ -46,7 +46,7 @@
                 $description = $taskDetails['description'];
                 $due_date = $taskDetails['due_date'];
             @endphp
-            <h2>Edit Task</h2>
+            <h2>Modify Task</h2>
 
             <div class="mb-3">
                 <label for="Title" class="form-label">Title</label>
@@ -80,7 +80,7 @@
                 </span>
             </div>
 
-            <button type="submit" class="btn btn-primary">Edit Task</button>
+            <button type="submit" class="btn btn-primary">Modify</button>
         </form>
     </div>
 
